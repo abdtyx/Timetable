@@ -8,7 +8,7 @@ from Login.Login import LoginEhall
 from Get.GetTable import Table
 from Get.GetChangeInfo import Change
 from Handle.SplitDayTable import Split
-from Crypto.Crypto import crypates
+from EhallCrypto.Crypto import crypates
 
 # path = r'D:\RepoForCommunication\tyx\Python\Timetable\\'
 path = '..\\'
