@@ -57,7 +57,7 @@ def GetDayTable():
     # }
 
     # 前端加密API
-    userinfo['password'] = crypates(userinfo['password'])
+    userinfo['password'] = crypates(userinfo['password']).decode()
 
     # Login模块处理登录ehall
     s = requests.Session()
