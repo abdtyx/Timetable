@@ -34,7 +34,16 @@ def Table(userinfo, s):
     r = s.post("http://ehall.xjtu.edu.cn/jwapp/sys/wdkb/modules/jshkcb/dqxnxq.do")
     data = json.loads(r.text)
     xnxqdm = data['datas']['dqxnxq']['rows'][0]['DM']
-    r = s.post("http://ehall.xjtu.edu.cn/jwapp/sys/wdkb/modules/xskcb/cxxsjbxx.do")
+    xn = data['datas']['dqxnxq']['rows'][0]['XNDM']
+    xq = data['datas']['dqxnxq']['rows'][0]['XQDM']
+    localtime = time.localtime(time.time())
+    rq = str(localtime.tm_year) + '-' + str(localtime.tm_mon) + '-' + str(localtime.tm_mday)
+    d = {
+        "XN": xn,
+        "XQ": xq,
+        "RQ": rq,
+    }
+    r = s.post("http://ehall.xjtu.edu.cn/jwapp/sys/wdkb/modules/jshkcb/dqzc.do", data=d)
     data = json.loads(r.text)
     tm_wk = data['datas']['cxxsjbxx']['rows'][0]['XSLBDM']
     r = s.post("http://ehall.xjtu.edu.cn/jwapp/sys/wdkb/modules/xskcb/xskcb.do?XNXQDM=" + str(xnxqdm) + "&SKZC=" + str(tm_wk), allow_redirects=False)
