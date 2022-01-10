@@ -45,7 +45,7 @@ def Table(userinfo, s):
     }
     r = s.post("http://ehall.xjtu.edu.cn/jwapp/sys/wdkb/modules/jshkcb/dqzc.do", data=d)
     data = json.loads(r.text)
-    tm_wk = data['datas']['cxxsjbxx']['rows'][0]['XSLBDM']
+    tm_wk = data['datas']['dqzc']['rows'][0]['ZC']
     r = s.post("http://ehall.xjtu.edu.cn/jwapp/sys/wdkb/modules/xskcb/xskcb.do?XNXQDM=" + str(xnxqdm) + "&SKZC=" + str(tm_wk), allow_redirects=False)
     while (r.status_code != 200):
         s = LoginEhall(userinfo, s)
